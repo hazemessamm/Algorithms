@@ -9,20 +9,21 @@ struct Node
 };
 Node* CreateNode(int data)
 {
-    Node *temp = new Node();
+    Node *temp = new Node(); 
     temp->data = data;
     temp->left = NULL;
     temp->right = NULL;
     return temp;
 }
-void InsertNode(Node *&root, int data)
+void InsertNode(Node *&root, int data) //*&root *& is added because i will make a change in the tree*
 {
+    //this function make a recursion until the root is equal null so it can add new node
     if(root == NULL)
     {
-        root = CreateNode(data);
+        root = CreateNode(data); 
         return;
     }
-    else if(data <= root->data)
+    else if(data <= root->data) 
     {
         InsertNode(root->left,data);
     }
