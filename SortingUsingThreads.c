@@ -124,8 +124,6 @@ int CheckD(int arr[])
 
 int main() 
 { 
-    	//int n = sizeof(arr)/sizeof(arr[0]); 
-    	//quickSort(arr, 0, n-1);
 	srand(time(NULL));
 	int i = 0;
 	for( i = 0 ; i < 50000 ; i++ ) 
