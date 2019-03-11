@@ -32,3 +32,8 @@ def mergeSort(arr):
 arr = [1,8,6,7,1,5,3]
 arr = mergeSort(arr)
 print(arr)
+
+
+#Worst case performance: O(n log n)
+#Best case performance: O(n log n)
+#Average case performance: O(n log n)
