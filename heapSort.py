@@ -26,3 +26,8 @@ heapSort(arr)
 print ("Sorted array is") 
 for i in range(len(arr)): 
     print (arr[i])
+
+    
+#Worst case performance: O(n log n)
+#Best case performance: O(n log n)
+#Average case performance: O(n log n)
