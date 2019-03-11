@@ -18,3 +18,9 @@ if result != 0:
     print("Element found at index", result)
 else:
     print("Element is not in the array")
+
+
+#Worst-Case performance: O(log n)
+#Average case performance: O(log n)
+#Best case performance: O(1)
+#Worst case space complexity: O(1)
