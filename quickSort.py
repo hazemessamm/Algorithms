@@ -18,8 +18,7 @@ arr = [6, 10, 7, 8, 9, 1, 3, 2, 4, 5]
 n = len(arr)
 quickSort(arr,0,n-1) 
 print ("Sorted array:") 
-for i in range(n): 
-    print (arr[i])
+print (arr)
     
 '''
 Worst case performance	O(n2)
