@@ -15,14 +15,14 @@ decrypted_word = cipher.decrypt(encrypted_word)
 guess_key = ''
 
 #8 for loops with range of 0 to 6.
-for i in range(7):
-    for j in range(7):
-        for k in range(7):
-            for l in range(7):
-                for m in range(7):
-                    for n in range(7):
-                        for o in range(7):
-                            for p in range(7):
+for i in range(10):
+    for j in range(10):
+        for k in range(10):
+            for l in range(10):
+                for m in range(10):
+                    for n in range(10):
+                        for o in range(10):
+                            for p in range(10):
                                 guess_key = bytes(str(i)+str(j)+str(k)+str(l)+str(m)+str(n)+str(o)+str(p), encoding)
                                 decrypted_guess = DES.new(guess_key, DES.MODE_ECB).decrypt(encrypted_word)
                                 if decrypted_guess == decrypted_word:
