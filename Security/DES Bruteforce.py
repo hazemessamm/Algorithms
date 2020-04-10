@@ -14,7 +14,7 @@ decrypted_word = cipher.decrypt(encrypted_word)
 
 guess_key = ''
 
-#8 for loops with range of 0 to 6.
+
 for i in range(10):
     for j in range(10):
         for k in range(10):
