@@ -9,7 +9,11 @@ class UF(object):
             else:
                 return False
     def union(self, p, q):
-        self.components[q] = self.components[p]
+        pid = self.components[p]
+        qid = self.components[q]
+        for i in range(self.n):
+            if self.components[i] == pid:
+                self.components[i] = qid
 
 uf = UF(10)
 uf.union(1,2)
