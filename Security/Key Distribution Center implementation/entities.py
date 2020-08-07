@@ -28,11 +28,11 @@ class Entities:
     
     #used to start communication with another entity
     #show_info variable is used if you want to print the details of what is happening
-    def communicate_with(self, entity=None, show_info=False):
+    def communicate_with(self, entity=None, verbose=False):
         current_nonce = self.generate_nonce()
         self.session_info.append(kdc.allocate_session_key(self.id, entity, current_nonce))
         self.session_key = self.encryption_tool.decrypt(self.get_initiator_info()[0])
-        if show_info:
+        if verbose:
             print(f'Initiator {self.id} sent to KDC {self.id, entity, current_nonce}')
             print(f'Encrypted Session Key for Entity {self.id} : {self.get_initiator_info()}')
             print(f'Encrypted Session Key for Entity {entity} : {self.get_responder_info()}')
@@ -64,16 +64,16 @@ class Entities:
             return self.encryption_tool.decrypt(value, DES.MODE_ECB)
     
     #send the responder info to the responder
-    def send_info(self, responder=None, info=None, show_info=False):
+    def send_info(self, responder, info):
         responder.recieved_info = info
         responder.preprocess_info()
     
     #preprocessing info like getting the session key from the info or getting the current initiator
     #Usually used by the responder 
-    def preprocess_info(self, show_info=True):
+    def preprocess_info(self, verbose=True):
         self.session_key = self.encryption_tool.decrypt(self.recieved_info[0])
         self.current_initiator = str(self.encryption_tool.decrypt(self.recieved_info[1]), encoding=self.encoding_type)
-        if show_info:
+        if verbose:
             print(f'Session Key: {self.session_key}')
             print(f'Current Initiator: {self.current_initiator}')
             
@@ -89,9 +89,9 @@ class Entities:
     
     #method used to authenticate the initiator
     #used by the responder to authenticate the entity of the initiator
-    def authenticate_initiator(self, show_info=True):
+    def authenticate_initiator(self, verbose=True):
         current_nonce = bytes(self.pad(str(self.generate_nonce())), encoding=self.encoding_type)
-        if show_info:
+        if verbose:
             print("Before Encrpytion: ", current_nonce)
         return DES.new(self.session_key, DES.MODE_ECB).encrypt(current_nonce)
     
@@ -134,10 +134,10 @@ c.connect_to_kdc()
 
 
 #entity A wants to communicate with entity B
-a.communicate_with('b', show_info=True)
+a.communicate_with('b', verbose=True)
 
 #entity A sends the information of the session key and other stuff to entity B to decrypt them
-a.send_info(b, a.get_responder_info(), show_info=True)
+a.send_info(b, a.get_responder_info(), verbose=True)
 
 #entity B wants to authenticate that entity A is the sender so it uses authenticate_initiator method
 encrypted_nonce = b.authenticate_initiator()
