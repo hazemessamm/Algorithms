@@ -39,19 +39,24 @@ class KDC:
     #Used when the entity wants to communicate with another entity, KDC generates the session key
     #by taking the initiator id and responder id to register everything and also taking the nonce
     def allocate_session_key(self, initiator_id=None, responder_id=None, nonce=None):
+        
         #the modified variables are created to work on them because I want to return the results to the user without any changes
         #or modifications to be clear output
         initiator_id_modified = self.pad(str(initiator_id)) 
         responder_id_modified = self.pad(str(responder_id))
+        
         #getting the initiator and responder master key from a dictionary to encrypt the output using both of them
         initiator_key = self.master_keys.get(initiator_id_modified)
         responder_key = self.master_keys.get(responder_id_modified)
+        
         #generates the session key
         session_key = self.generate_session_key()
+        
         #creates a DES objects for initiator and responder to encrypt the result to ensure that only the initiator and responder
         #will decrypt them
         encrypted_initiator_msg = DES.new(initiator_key, mode=DES.MODE_ECB)
         encrypted_responder_msg = DES.new(responder_key, mode=DES.MODE_ECB)
+        
         #it returns a list with two indexes the first one contains the output of the initiator which is the session key encrypted
         #by the initiator master key and the initiator id, responder id and the nonce
         #the second label contains the responder Id which will be sent by the initiator to the responder
