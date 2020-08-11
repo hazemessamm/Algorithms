@@ -41,7 +41,6 @@ public class EncryptionDriver {
         int k = 0;
         while(true)
         {
-            //I found this rule on the internet which is d = (K * phi(n) + 1) / e for some integer K
             this.d = k * this.phi + 1;
             if (this.d % this.e == 0)
             {
