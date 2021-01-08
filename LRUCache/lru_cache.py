@@ -105,7 +105,7 @@ class LRUCache:
             print("Key: ", key, "Value: ", value)
 
 
-lru = LRUCache(2)
+lru = LRUCache(3)
 lru.add(1, 2)
 lru.add(2, 32)
 lru.add(4, 25)
