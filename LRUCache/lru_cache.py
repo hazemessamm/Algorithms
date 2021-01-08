@@ -10,8 +10,8 @@ class LRUCache:
     because adding it in the front means that it's the most recent element we used so we don't want it to 
     be at the last or in the middle we need it in the front.
 
-    check out GeeksforGeeks C++ implementation https://www.geeksforgeeks.org/lru-cache-implementation/
-    check out interview cake for more explaination https://www.interviewcake.com/concept/java/lru-cache
+    Check out GeeksforGeeks C++ implementation https://www.geeksforgeeks.org/lru-cache-implementation/
+    Check out interview cake for more explaination https://www.interviewcake.com/concept/java/lru-cache
     '''
     def __init__(self, capacity=None):
         if capacity == None:
