@@ -24,14 +24,18 @@ class LRUCache:
     def get(self, key) -> int:
         #check whether the key that the user wants exists or not
         if key in self.cache:
-            #if it exists then we pop the key from the tracker and store the value of that key
-            #then we add this key value pairs at the front of the tracker
-            #we added it in the front because when the user used the get() method that
-            #means that this key is important and used, then we need it to be at the front 
-            #because of it's importance
+            '''
+            if it exists then we pop the key from the tracker and store the value of that key
+            then we add this key value pairs at the front of the tracker
+            we added it in the front because when the user used the get() method that
+            means that this key is important and used, then we need it to be at the front 
+            because of it's importance
+            '''
             value = self.tracker.pop(key)
-            #this method adds the key value pairs in the front without updating
-            #the cache because we don't need to update it because the key is already in the cache
+            '''
+            this method adds the key value pairs in the front without updating
+            the cache because we don't need to update it because the key is already in the cache
+            '''
             self.prepend_without_cache_update({key: value})
             return value
         else:
